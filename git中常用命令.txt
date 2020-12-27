@@ -1,0 +1,24 @@
+git中常用命令：
+git init --初始化git仓库
+
+提交文件到仓库：
+	git add .
+	git commit -m "初始化项目版本"
+
+从git仓库中拉取项目：
+	git clone <repo>
+
+编辑git配置文件：
+	git config -e #针对当前仓库
+	git config -e --global #针对系统上的所有仓库
+	
+设置提交代码时的用户信息：
+	git config --global user.name "姓名"
+	git config --global user.emal email邮箱
+	
+查看当前仓库的状态，显示有变更的文件：
+	git status
+	
+比较文件的不同，即暂存区和工作区的区别
+	git diff
+	
