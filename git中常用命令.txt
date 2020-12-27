@@ -79,6 +79,9 @@ git init --初始化git仓库
 删除分支：
 	git branch -d dev
 	
+最新版本的切换分支使用switch:
+	git switch -c dev
+	git switch master
 	
 
 	
