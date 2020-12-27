@@ -48,7 +48,7 @@ git init --初始化git仓库
 	git checkout -- <file>
 	
 当你不但改乱了工作区的某个文件内容，还添加到了暂存区，想放弃修改：
-	第一步：git reset hard <file>
+	第一步：git reset head <file>
 	第二步：git checkout -- file 
 
 	
