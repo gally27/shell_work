@@ -22,3 +22,6 @@ git init --初始化git仓库
 比较文件的不同，即暂存区和工作区的区别
 	git diff
 	
+提交暂存区到本地仓库
+	git commit -m "git中常用命令"
+	
