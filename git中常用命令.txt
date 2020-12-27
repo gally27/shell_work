@@ -83,5 +83,8 @@ git init --初始化git仓库
 	git switch -c dev
 	git switch master
 	
+查看分支合并图：
+	git log --graph
+	
 
 	
