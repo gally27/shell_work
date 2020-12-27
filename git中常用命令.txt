@@ -73,5 +73,12 @@ git init --初始化git仓库
 查看分支：
 	git branch
 	
+合并分支：
+	git merge dev 
+	
+删除分支：
+	git branch -d dev
+	
+	
 
 	
