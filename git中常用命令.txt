@@ -14,7 +14,7 @@ git init --初始化git仓库
 	
 设置提交代码时的用户信息：
 	git config --global user.name "姓名"
-	git config --global user.emal email邮箱
+	git config --global user.emal <email邮箱>
 	
 查看当前仓库的状态，显示有变更的文件：
 	git status
@@ -24,4 +24,25 @@ git init --初始化git仓库
 	
 提交暂存区到本地仓库
 	git commit -m "git中常用命令"
+	
+
+显示最近到最远提交的日志：
+	git log
+	git log --pretty=oneline 
+	
+回退版本：
+	git reset --hard <版本号>
+	
+回退到历史版本后，又想回到最新版本,重返未了：
+	git reflog
+	
+工作区和暂存区;
+	工作区（working directory），就是你电脑能看到的目录；
+	版本库（repository），工作区有个隐藏的目录.git,这个不是工作区，而是版本库；
+	暂存区（index或stage），一般存放在.git目录下的index文件（.git/index）.
+		我们往git版本库中添加文件的时候，分成两步：
+		第一步是用git add 把文件添加进去，实际上就是把文件修改添加到暂存区
+		第二步是用git commi提交更改，实际上就是把暂存区中的所有内容提交到了版本库
+	
+
 	
