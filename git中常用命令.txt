@@ -87,7 +87,7 @@ git init --初始化git仓库
 	git log --graph
 	
 本地仓库与远程仓库相连：
-	git remote add <远程仓库的地址>
+	git remote add origin <远程仓库的地址>
 
 把本地仓库的内容推送到远程仓库上去：
 	git push -u origin master #第一次推送
@@ -95,6 +95,12 @@ git init --初始化git仓库
 	
 从远程仓库克隆：
 	git clone <git远程仓库地址>
+	
+查看远程仓库连接情况：
+	git remote -v
+	
+删除远程仓库：
+	git remote rm origin
 	
 
 	
