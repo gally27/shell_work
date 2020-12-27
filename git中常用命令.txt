@@ -93,5 +93,8 @@ git init --初始化git仓库
 	git push -u origin master #第一次推送
 	git push origin master #下次推送
 	
+从远程仓库克隆：
+	git clone <git远程仓库地址>
+	
 
 	
