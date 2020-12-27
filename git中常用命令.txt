@@ -86,5 +86,12 @@ git init --初始化git仓库
 查看分支合并图：
 	git log --graph
 	
+本地仓库与远程仓库相连：
+	git remote add <远程仓库的地址>
+
+把本地仓库的内容推送到远程仓库上去：
+	git push -u origin master #第一次推送
+	git push origin master #下次推送
+	
 
 	
