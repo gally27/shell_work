@@ -25,6 +25,15 @@ git init --初始化git仓库
 提交暂存区到本地仓库
 	git commit -m "git中常用命令"
 	
+删除工作区的文件：
+	git rm
+	
+移动或重命名工作区文件：
+	git mv
+	
+以列表的形式查看指定文件的修改历史：
+	git blame <file>
+	
 
 显示最近到最远提交的日志：
 	git log
