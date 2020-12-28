@@ -1,0 +1,31 @@
+现在centos7上没有默认的mysql安装源，yum中只有mariadb安装包
+
+下载mysql按装包的yum源：
+	wget 'https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm'
+	
+安装yum源：
+	rpm -Uvh mysql57-community-release-el7-11.noarch.rpm
+	
+查看有那些版本的mysql:
+	yum list all | grep mysql
+	
+安装mysql:
+	yum install -y mysql-community-server
+	
+启动msyqld:
+	systemctl start mysqld
+	
+查看mysql的运行状态：
+	systemctl status mysqld
+
+查询mysql的登录密码：
+	grep 'temporary password' /var/log/mysqld.log/mysqld
+	
+登录mysql:
+	mysql -uroot -p<密码>
+	
+登录上以后修改密码：
+	ALTER USER 'root'@l'ocalhost'	IDENTIFIED BY 'XXGC.lab123'
+	
+刷新：
+	flush priviledes;
