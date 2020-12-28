@@ -92,6 +92,8 @@ git init --初始化git仓库
 恢复隐藏的分支：
 	git stash pop
 	
+
+	
 本地仓库与远程仓库相连：
 	git remote add origin <远程仓库的地址>
 
@@ -108,5 +110,7 @@ git init --初始化git仓库
 删除远程仓库：
 	git remote rm origin
 	
+从远程仓库抓取抓取最新的：
+	git pull
 
 	
