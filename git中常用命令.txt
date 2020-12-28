@@ -86,6 +86,12 @@ git init --初始化git仓库
 查看分支合并图：
 	git log --graph
 	
+把当前工作的分支隐藏：
+	git stash
+	
+恢复隐藏的分支：
+	git stash pop
+	
 本地仓库与远程仓库相连：
 	git remote add origin <远程仓库的地址>
 
