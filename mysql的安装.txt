@@ -1,0 +1,272 @@
+通过yum源安装：
+
+查看是否存在mariadb包，mariadb完全和mysql兼容：
+[vagrant@worker1 ~]$ sudo yum list all | grep mariadb
+mariadb-libs.x86_64                         1:5.5.65-1.el7             @anaconda
+mariadb.x86_64                              1:5.5.68-1.el7             base
+mariadb-bench.x86_64                        1:5.5.68-1.el7             base
+mariadb-devel.i686                          1:5.5.68-1.el7             base
+mariadb-devel.x86_64                        1:5.5.68-1.el7             base
+mariadb-embedded.i686                       1:5.5.68-1.el7             base
+mariadb-embedded.x86_64                     1:5.5.68-1.el7             base
+mariadb-embedded-devel.i686                 1:5.5.68-1.el7             base
+mariadb-embedded-devel.x86_64               1:5.5.68-1.el7             base
+mariadb-libs.i686                           1:5.5.68-1.el7             base
+mariadb-libs.x86_64                         1:5.5.68-1.el7             base
+mariadb-server.x86_64                       1:5.5.68-1.el7             base
+mariadb-test.x86_64                         1:5.5.68-1.el7             base
+
+安装mysql:
+[vagrant@worker1 ~]$ sudo yum install mariadb mariadb-server mariadb-libs
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.bfsu.edu.cn
+ * extras: mirrors.bfsu.edu.cn
+ * updates: mirrors.bfsu.edu.cn
+base                                                     | 3.6 kB     00:00
+extras                                                   | 2.9 kB     00:00
+updates                                                  | 2.9 kB     00:00
+Resolving Dependencies
+--> Running transaction check
+---> Package mariadb.x86_64 1:5.5.68-1.el7 will be installed
+---> Package mariadb-libs.x86_64 1:5.5.65-1.el7 will be updated
+---> Package mariadb-libs.x86_64 1:5.5.68-1.el7 will be an update
+---> Package mariadb-server.x86_64 1:5.5.68-1.el7 will be installed
+--> Processing Dependency: perl-DBI for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl-DBD-MySQL for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(Data::Dumper) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(DBI) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: libaio.so.1(LIBAIO_0.4)(64bit) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: libaio.so.1(LIBAIO_0.1)(64bit) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: libaio.so.1()(64bit) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Running transaction check
+---> Package libaio.x86_64 0:0.3.109-13.el7 will be installed
+---> Package perl-DBD-MySQL.x86_64 0:4.023-6.el7 will be installed
+---> Package perl-DBI.x86_64 0:1.627-4.el7 will be installed
+--> Processing Dependency: perl(RPC::PlServer) >= 0.2001 for package: perl-DBI-1.627-4.el7.x86_64
+--> Processing Dependency: perl(RPC::PlClient) >= 0.2000 for package: perl-DBI-1.627-4.el7.x86_64
+---> Package perl-Data-Dumper.x86_64 0:2.145-3.el7 will be installed
+--> Running transaction check
+---> Package perl-PlRPC.noarch 0:0.2020-14.el7 will be installed
+--> Processing Dependency: perl(Net::Daemon) >= 0.13 for package: perl-PlRPC-0.2020-14.el7.noarch
+--> Processing Dependency: perl(Net::Daemon::Test) for package: perl-PlRPC-0.2020-14.el7.noarch
+--> Processing Dependency: perl(Net::Daemon::Log) for package: perl-PlRPC-0.2020-14.el7.noarch
+--> Processing Dependency: perl(Compress::Zlib) for package: perl-PlRPC-0.2020-14.el7.noarch
+--> Running transaction check
+---> Package perl-IO-Compress.noarch 0:2.061-2.el7 will be installed
+--> Processing Dependency: perl(Compress::Raw::Zlib) >= 2.061 for package: perl-IO-Compress-2.061-2.el7.noarch
+--> Processing Dependency: perl(Compress::Raw::Bzip2) >= 2.061 for package: perl-IO-Compress-2.061-2.el7.noarch
+---> Package perl-Net-Daemon.noarch 0:0.48-5.el7 will be installed
+--> Running transaction check
+---> Package perl-Compress-Raw-Bzip2.x86_64 0:2.061-3.el7 will be installed
+---> Package perl-Compress-Raw-Zlib.x86_64 1:2.061-4.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                      Arch        Version               Repository
+                                                                           Size
+================================================================================
+Installing:
+ mariadb                      x86_64      1:5.5.68-1.el7        base      8.8 M
+ mariadb-server               x86_64      1:5.5.68-1.el7        base       11 M
+Updating:
+ mariadb-libs                 x86_64      1:5.5.68-1.el7        base      760 k
+Installing for dependencies:
+ libaio                       x86_64      0.3.109-13.el7        base       24 k
+ perl-Compress-Raw-Bzip2      x86_64      2.061-3.el7           base       32 k
+ perl-Compress-Raw-Zlib       x86_64      1:2.061-4.el7         base       57 k
+ perl-DBD-MySQL               x86_64      4.023-6.el7           base      140 k
+ perl-DBI                     x86_64      1.627-4.el7           base      802 k
+ perl-Data-Dumper             x86_64      2.145-3.el7           base       47 k
+ perl-IO-Compress             noarch      2.061-2.el7           base      260 k
+ perl-Net-Daemon              noarch      0.48-5.el7            base       51 k
+ perl-PlRPC                   noarch      0.2020-14.el7         base       36 k
+
+Transaction Summary
+================================================================================
+Install  2 Packages (+9 Dependent packages)
+Upgrade  1 Package
+
+Total download size: 22 M
+Is this ok [y/d/N]: ^Cn
+Exiting on user command
+Your transaction was saved, rerun it with:
+ yum load-transaction /tmp/yum_save_tx.2020-12-28.03-03.MFlMQQ.yumtx
+[vagrant@worker1 ~]$ sudo yum install mariadb mariadb-server mariadb-libs -y
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.bfsu.edu.cn
+ * extras: mirrors.bfsu.edu.cn
+ * updates: mirrors.bfsu.edu.cn
+Resolving Dependencies
+--> Running transaction check
+---> Package mariadb.x86_64 1:5.5.68-1.el7 will be installed
+---> Package mariadb-libs.x86_64 1:5.5.65-1.el7 will be updated
+---> Package mariadb-libs.x86_64 1:5.5.68-1.el7 will be an update
+---> Package mariadb-server.x86_64 1:5.5.68-1.el7 will be installed
+--> Processing Dependency: perl-DBI for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl-DBD-MySQL for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(Data::Dumper) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(DBI) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: libaio.so.1(LIBAIO_0.4)(64bit) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: libaio.so.1(LIBAIO_0.1)(64bit) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: libaio.so.1()(64bit) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Running transaction check
+---> Package libaio.x86_64 0:0.3.109-13.el7 will be installed
+---> Package perl-DBD-MySQL.x86_64 0:4.023-6.el7 will be installed
+---> Package perl-DBI.x86_64 0:1.627-4.el7 will be installed
+--> Processing Dependency: perl(RPC::PlServer) >= 0.2001 for package: perl-DBI-1.627-4.el7.x86_64
+--> Processing Dependency: perl(RPC::PlClient) >= 0.2000 for package: perl-DBI-1.627-4.el7.x86_64
+---> Package perl-Data-Dumper.x86_64 0:2.145-3.el7 will be installed
+--> Running transaction check
+---> Package perl-PlRPC.noarch 0:0.2020-14.el7 will be installed
+--> Processing Dependency: perl(Net::Daemon) >= 0.13 for package: perl-PlRPC-0.2020-14.el7.noarch
+--> Processing Dependency: perl(Net::Daemon::Test) for package: perl-PlRPC-0.2020-14.el7.noarch
+--> Processing Dependency: perl(Net::Daemon::Log) for package: perl-PlRPC-0.2020-14.el7.noarch
+--> Processing Dependency: perl(Compress::Zlib) for package: perl-PlRPC-0.2020-14.el7.noarch
+--> Running transaction check
+---> Package perl-IO-Compress.noarch 0:2.061-2.el7 will be installed
+--> Processing Dependency: perl(Compress::Raw::Zlib) >= 2.061 for package: perl-IO-Compress-2.061-2.el7.noarch
+--> Processing Dependency: perl(Compress::Raw::Bzip2) >= 2.061 for package: perl-IO-Compress-2.061-2.el7.noarch
+---> Package perl-Net-Daemon.noarch 0:0.48-5.el7 will be installed
+--> Running transaction check
+---> Package perl-Compress-Raw-Bzip2.x86_64 0:2.061-3.el7 will be installed
+---> Package perl-Compress-Raw-Zlib.x86_64 1:2.061-4.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                      Arch        Version               Repository
+                                                                           Size
+================================================================================
+Installing:
+ mariadb                      x86_64      1:5.5.68-1.el7        base      8.8 M
+ mariadb-server               x86_64      1:5.5.68-1.el7        base       11 M
+Updating:
+ mariadb-libs                 x86_64      1:5.5.68-1.el7        base      760 k
+Installing for dependencies:
+ libaio                       x86_64      0.3.109-13.el7        base       24 k
+ perl-Compress-Raw-Bzip2      x86_64      2.061-3.el7           base       32 k
+ perl-Compress-Raw-Zlib       x86_64      1:2.061-4.el7         base       57 k
+ perl-DBD-MySQL               x86_64      4.023-6.el7           base      140 k
+ perl-DBI                     x86_64      1.627-4.el7           base      802 k
+ perl-Data-Dumper             x86_64      2.145-3.el7           base       47 k
+ perl-IO-Compress             noarch      2.061-2.el7           base      260 k
+ perl-Net-Daemon              noarch      0.48-5.el7            base       51 k
+ perl-PlRPC                   noarch      0.2020-14.el7         base       36 k
+
+Transaction Summary
+================================================================================
+Install  2 Packages (+9 Dependent packages)
+Upgrade  1 Package
+
+Total download size: 22 M
+Downloading packages:
+No Presto metadata available for base
+(1/12): libaio-0.3.109-13.el7.x86_64.rpm                   |  24 kB   00:00
+(2/12): perl-Compress-Raw-Bzip2-2.061-3.el7.x86_64.rpm     |  32 kB   00:00
+(3/12): perl-Compress-Raw-Zlib-2.061-4.el7.x86_64.rpm      |  57 kB   00:00
+(4/12): perl-DBD-MySQL-4.023-6.el7.x86_64.rpm              | 140 kB   00:01
+(5/12): mariadb-libs-5.5.68-1.el7.x86_64.rpm               | 760 kB   00:06
+(6/12): perl-Data-Dumper-2.145-3.el7.x86_64.rpm            |  47 kB   00:00
+(7/12): perl-IO-Compress-2.061-2.el7.noarch.rpm            | 260 kB   00:00
+(8/12): perl-Net-Daemon-0.48-5.el7.noarch.rpm              |  51 kB   00:00
+(9/12): perl-PlRPC-0.2020-14.el7.noarch.rpm                |  36 kB   00:00
+(10/12): perl-DBI-1.627-4.el7.x86_64.rpm                   | 802 kB   00:06
+(11/12): mariadb-server-5.5.68-1.el7.x86_64.rpm            |  11 MB   00:43
+(12/12): mariadb-5.5.68-1.el7.x86_64.rpm                   | 8.8 MB   00:46
+--------------------------------------------------------------------------------
+Total                                              489 kB/s |  22 MB  00:46
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : 1:mariadb-libs-5.5.68-1.el7.x86_64                          1/13
+  Installing : perl-Data-Dumper-2.145-3.el7.x86_64                         2/13
+  Installing : 1:mariadb-5.5.68-1.el7.x86_64                               3/13
+  Installing : libaio-0.3.109-13.el7.x86_64                                4/13
+  Installing : 1:perl-Compress-Raw-Zlib-2.061-4.el7.x86_64                 5/13
+  Installing : perl-Net-Daemon-0.48-5.el7.noarch                           6/13
+  Installing : perl-Compress-Raw-Bzip2-2.061-3.el7.x86_64                  7/13
+  Installing : perl-IO-Compress-2.061-2.el7.noarch                         8/13
+  Installing : perl-PlRPC-0.2020-14.el7.noarch                             9/13
+  Installing : perl-DBI-1.627-4.el7.x86_64                                10/13
+  Installing : perl-DBD-MySQL-4.023-6.el7.x86_64                          11/13
+  Installing : 1:mariadb-server-5.5.68-1.el7.x86_64                       12/13
+  Cleanup    : 1:mariadb-libs-5.5.65-1.el7.x86_64                         13/13
+  Verifying  : perl-Compress-Raw-Bzip2-2.061-3.el7.x86_64                  1/13
+  Verifying  : perl-Net-Daemon-0.48-5.el7.noarch                           2/13
+  Verifying  : 1:mariadb-libs-5.5.68-1.el7.x86_64                          3/13
+  Verifying  : perl-Data-Dumper-2.145-3.el7.x86_64                         4/13
+  Verifying  : 1:mariadb-server-5.5.68-1.el7.x86_64                        5/13
+  Verifying  : perl-DBD-MySQL-4.023-6.el7.x86_64                           6/13
+  Verifying  : 1:mariadb-5.5.68-1.el7.x86_64                               7/13
+  Verifying  : 1:perl-Compress-Raw-Zlib-2.061-4.el7.x86_64                 8/13
+  Verifying  : perl-DBI-1.627-4.el7.x86_64                                 9/13
+  Verifying  : libaio-0.3.109-13.el7.x86_64                               10/13
+  Verifying  : perl-PlRPC-0.2020-14.el7.noarch                            11/13
+  Verifying  : perl-IO-Compress-2.061-2.el7.noarch                        12/13
+  Verifying  : 1:mariadb-libs-5.5.65-1.el7.x86_64                         13/13
+
+Installed:
+  mariadb.x86_64 1:5.5.68-1.el7       mariadb-server.x86_64 1:5.5.68-1.el7
+
+Dependency Installed:
+  libaio.x86_64 0:0.3.109-13.el7
+  perl-Compress-Raw-Bzip2.x86_64 0:2.061-3.el7
+  perl-Compress-Raw-Zlib.x86_64 1:2.061-4.el7
+  perl-DBD-MySQL.x86_64 0:4.023-6.el7
+  perl-DBI.x86_64 0:1.627-4.el7
+  perl-Data-Dumper.x86_64 0:2.145-3.el7
+  perl-IO-Compress.noarch 0:2.061-2.el7
+  perl-Net-Daemon.noarch 0:0.48-5.el7
+  perl-PlRPC.noarch 0:0.2020-14.el7
+
+Updated:
+  mariadb-libs.x86_64 1:5.5.68-1.el7
+
+Complete!
+
+查看mariadb的运行状态：
+[vagrant@worker1 ~]$ sudo systemctl status mariadb
+● mariadb.service - MariaDB database server
+   Loaded: loaded (/usr/lib/systemd/system/mariadb.service; disabled; vendor preset: disabled)
+   Active: inactive (dead)
+   
+启动mariadb:
+[vagrant@worker1 ~]$ sudo systemctl start mariadb
+
+在查看mariadb的运行状态：
+[vagrant@worker1 ~]$ sudo systemctl status mariadb
+● mariadb.service - MariaDB database server
+   Loaded: loaded (/usr/lib/systemd/system/mariadb.service; disabled; vendor preset: disabled)
+   Active: active (running) since Mon 2020-12-28 03:08:15 UTC; 1min 3s ago
+  Process: 2777 ExecStartPost=/usr/libexec/mariadb-wait-ready $MAINPID (code=exited, status=0/SUCCESS)
+  Process: 2694 ExecStartPre=/usr/libexec/mariadb-prepare-db-dir %n (code=exited, status=0/SUCCESS)
+ Main PID: 2776 (mysqld_safe)
+   CGroup: /system.slice/mariadb.service
+           ├─2776 /bin/sh /usr/bin/mysqld_safe --basedir=/usr
+           └─2941 /usr/libexec/mysqld --basedir=/usr --datadir=/var/lib/mysql...
+
+Dec 28 03:08:13 worker1 mariadb-prepare-db-dir[2694]: MySQL manual for more i...
+Dec 28 03:08:13 worker1 mariadb-prepare-db-dir[2694]: Please report any probl...
+Dec 28 03:08:13 worker1 mariadb-prepare-db-dir[2694]: The latest information ...
+Dec 28 03:08:13 worker1 mariadb-prepare-db-dir[2694]: You can find additional...
+Dec 28 03:08:13 worker1 mariadb-prepare-db-dir[2694]: http://dev.mysql.com
+Dec 28 03:08:13 worker1 mariadb-prepare-db-dir[2694]: Consider joining MariaD...
+Dec 28 03:08:13 worker1 mariadb-prepare-db-dir[2694]: https://mariadb.org/get...
+Dec 28 03:08:13 worker1 mysqld_safe[2776]: 201228 03:08:13 mysqld_safe Loggi....
+Dec 28 03:08:13 worker1 mysqld_safe[2776]: 201228 03:08:13 mysqld_safe Start...l
+Dec 28 03:08:15 worker1 systemd[1]: Started MariaDB database server.
+Hint: Some lines were ellipsized, use -l to show in full.
+
+查看3306端口是否被监听：
+[vagrant@worker1 ~]$ netstat -pantu | grep 3306
+(No info could be read for "-p": geteuid()=1000 but you should be root.)
+tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      -
+
+
+
