@@ -1,0 +1,34 @@
+mysql的主从复制原理：
+1、主库开启二进制日志（bin-log）
+2、从库执行change master执行主库，此时主库会创建一个dump线程，用于发送二进制日子日志；
+3、从库执行start slave,开启IO/SQL线程；
+
+具体操作：
+1、在master上开启二进制日志、添加server_id
+	修改mysql配置文件：/etc/my.cnf
+	添加：
+		log-bin=mysql-bin
+		server_id=1
+		
+2、在slave上添加server_id(不能与maste一致)
+	修改mysql配置文件：/etc/my.cnf
+	添加：
+		server_id=2
+
+3、在master为slave添加可以复制的权限，也可以给all:
+	登录mysql执行下面语句：
+mysql > grant replication slave on *.* to 'rep'@'%' identifiied by '123123';
+	
+4、然后在slave上change master指向主库:
+	登录mysql执行下面语句：
+mysql > change master to master_host='<master上的ip>',master_user='<赋权的用户名>,master_password='<赋权用户的密码>',master_log_file='master正在记录的二进制日志文件',master_log_pos='二进制节点';
+	可以在master上查找正在记录的二进制文件：
+mysql > show master status\G;
+
+5、在slave上开启IO线程和SQL线程；
+	登录mysql执行下面语句：
+mysql > start slave;
+	查看是否开启，可以用show slave status\G;
+	slave_IO_running和slave_sql_running为yes,yes代表开启了
+	
+6、测试
