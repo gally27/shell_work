@@ -19,7 +19,7 @@
 	systemctl status mysqld
 
 查询mysql的登录密码：
-	grep 'temporary password' /var/log/mysqld.log/mysqld
+	grep 'temporary password' /var/log/mysqld.log
 	
 登录mysql:
 	mysql -uroot -p<密码>
