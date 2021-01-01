@@ -109,3 +109,89 @@ linux查看进程：
 	    	KiB Swap:  2097148 total   ----  swap交换分区总空间大小
 	    	2097148 free               ----  swap未使用空间大小
 	    	0 used                     ----  已使用swap空间大小
+
+
+linux把服务放在后台运行：
+	命令：
+		[commod] &  把命令放到后台执行 
+		ctrl+Z 正在运行中的程序放到后台，并且暂停
+	    jobs： 可以查看在后台运行的程序
+	    fg：用于将后台运行的或挂起的任务（或作业）切换到前台运行
+	    bg：将一个后台暂停的命令继续运行
+
+linux中系统资源查看：
+	命令：  vmstat 1 3
+	    [root@iz2ze06umbj6xzf02r6luvz ~]# vmstat 1 3
+		procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+		 r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+		 5  0      0  86900 104456 549264    0    0     0     9    1    4  1  1 98  0  0
+		 0  0      0  86776 104456 549248    0    0     0     0 1354 2878  1  0 99  0  0
+		 0  0      0  86652 104456 549252    0    0     0     0 1392 2899  3  1 96  0  0
+	procs:进程信息字段
+	- r : 等待运行的进程数量，数量越大，系统越繁忙
+	- b : 不可被唤醒的进程数量，数量越大系统越繁忙
+	memory:内存信息字段
+	- swpd : 虚拟内存使用的情况，单位KB
+	- free : 空闲的内存容量，单位KB
+	- buff : 缓冲区内存容量，单位KB
+	- cache : 缓存的内存容量，单位KB
+	swaf:交换分区的信息字段：
+	- si : 从磁盘中交换到内存中数据的数量，单位kb
+	- so : 从内存中交换到磁盘中数据的数量，单位kb
+		此两个数据越大，证明数据需要经常在磁盘和内存之间交换，系统性能越差。
+	IO:磁盘读写信息字段
+	- bi : 从块设备读入数据的总量，单位是块
+	- bo : 写到块设备的数据的总量，单位是块。此两个数据越大，代表系统I/O越繁忙。
+	system:系统信息字段
+	- in： 每秒被中断的进程次数
+	- cs : 每秒钟进行的事件切换次数。
+		此两个数据越大，代表系统与接口设备通信越繁忙
+	CPU:cpu信息字段
+	- us : 非内核进程消耗cpu运算时间的百分比
+	- sy : 内核进程销号cpu运算时间的百分比
+	- id : 空闲cpu百分比
+	- wa : 等待I/O所消耗的cpu百分比
+	- st : 被虚拟及所盗用的cpu百分比
+
+查看cpu的相关信息：
+	命令：dmesg | grep cpu
+    	[root@iz2ze06umbj6xzf02r6luvz ~]# dmesg | grep cpu
+    	[    0.000000] Initializing cgroup subsys cpuset
+    	[    0.000000] Initializing cgroup subsys cpu
+    	[    0.000000] Initializing cgroup subsys cpuacct
+    	[    0.000000] x86 PAT enabled: cpu 0, old 0x7040600070406, new 0x7010600070106
+    	[    0.000000] kvm-clock: cpu 0, msr 0:3ff69001, primary cpu clock
+    	[    0.000000] setup_percpu: NR_CPUS:5120 nr_cpumask_bits:1 nr_cpu_ids:1 nr_node_ids:1
+    	[    0.000000] PERCPU: Embedded 33 pages/cpu @ffff88003fc00000 s96728 r8192 d30248 u2097152
+    	[    0.000000] pcpu-alloc: s96728 r8192 d30248 u2097152 alloc=1*2097152
+    	[    0.000000] pcpu-alloc: [0] 0 
+    	[    0.000000] KVM setup async PF for cpu 0
+    	[    0.000000] kvm-stealtime: cpu 0, msr 3fc0f3c0
+    	[    0.000000] 	RCU restricting CPUs from NR_CPUS=5120 to nr_cpu_ids=1.
+    	[    1.014105] cpuidle: using governor menu
+
+查看内存使用状态：
+	命令： free [-b][-k][-m][-g]
+		-b : 以字节为单位显示
+		-k : 以kb为单位显示，默认就是kb为单位
+		-b : 以mb为单位显示
+		-g : 以gb为单位显示
+
+查看cpu信息：
+	cat /proc/cpuinfo
+
+命令：uptime
+	显示系统的启动时间和平均负载，也就是top命令的第一行。w命令也可以看到这个数据。
+
+查看系统与内核相关信息：
+	uname -a
+
+判断当前系统的位数：
+	file /bin/ls
+
+查看linux系统的发行版本：
+	lsb_release -a
+
+缓存和缓冲的区别：
+	简单来说缓存（cache）是用来加速数据从硬盘中“读取”的，而缓冲（buffer）是用来加速数据“写入”硬盘的。
+
