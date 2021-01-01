@@ -1,0 +1,26 @@
+linux中的用户权限：
+
+什么是属主、属组用户
+	属主：所属的用户，文档所有者，这是一个人
+	属组用户：所属用户组，这个是一个组
+	其他用户
+
+linux下查看所有的用户及所有用户组：
+	查看当前登录的用户名：whoami
+	查看当前登录的用户组内成员：groups
+	查看root用户所在的组：groups root
+
+	/etc/group 文件包含所有组
+		group_name:passwd:gid:user_list
+		[vagrant@worker1 ~]$ cat /etc/group
+		root:x:0:
+		bin:x:1:
+		daemon:x:2:
+		sys:x:3:
+
+linxu中修改文件权限的方法：
+	r表示可读，w表示可写，x表示可执行
+	+表示增加权限，-表示取消权限
+	r=4,w=2,x=1
+
+
