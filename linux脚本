@@ -1,0 +1,35 @@
+linux脚本中几个参数的意思
+	$#:传入脚本的参数个数
+	$0：脚本自身的名称
+	$1:传入脚本的第一个参数
+	$2:传入脚本的第二个参数
+	$@:传入脚本的所有参数
+	$*:传入脚本的所有参数
+	$$:脚本执行的进程id
+	$?:上一条命令执行后的状态，结果为0表示正常，结果为1表述执行异常
+
+linux中常用的关机命令：
+	shutdown 会给系统计划一个时间关机。它可以被用户停止、关机、重启机器。
+		shutdown
+		shutdown now
+		shutdown 13:20
+		shutdown -p now  ###关闭机器
+		shutdown -H now  ###停止机器
+		shutdown -r09:35 ###在09：35重启机器
+		要取消即将进行的关机，只要输入下面命令： shutdown -c
+
+	halt 通知硬件来停止所有cpu功能，但仍然保持通电。
+		halt ###停止机器
+		halt -p ###关闭机器
+		halt --reboot ###重启机器
+
+	poweroff 会发送一个acpi信号来通知系统关机
+		poweroff ###关闭机器
+		poweroff --halt ###停止机器
+		poweroff --reboot ###重启机器
+
+
+	shutdown 以一种安全的方式关闭系统。所有登陆用户都可以看到关机信息提示，并且 login  将被阻塞。
+	halt命令，若系统的 runlevel 为 0 或 6 ，则关闭系统，否则以 shutdown 指令（加上 -h 参数）来取代。
+	poweroff命令用来关闭计算机操作系统并且切断系统电源。
+	reboot执行reboot指令可让系统停止运作，并重新开机。
