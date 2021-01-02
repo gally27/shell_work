@@ -1,0 +1,48 @@
+linux中的软件安装方式：
+
+rpm：
+- rpm包默认的安装位置：
+	/etc/ - 配置文件的安装目录
+	/usr/bin/ - 可执行命令安装目录
+	/usr/lib/ - 程序所有使用的函数库保存的位置
+	/usr/share/doc/ - 基本的软件使用手册保存的位置
+	/usr/share/man/ 帮助文档保存位置
+
+- rpm包安装：
+	命令： rpm -ivh 包全名
+		选项：
+		-i(install) 安装
+		-V(verbose)显示详细信息
+		-h(hash) 显示进度
+		--nodeps不检测依赖性
+
+- rpm包升级：
+	命令：rpm -Uvh 包全名
+	选项：
+		-U (upgrade) 升级
+
+- rpm卸载
+	命令： rpm -e 包名
+
+- rpm查询是否安装：
+	命令： rpm -q 包名
+		rpm -qa | grep [包名]
+
+- rpm查看软件包的详细信息
+	命令： rpm -qi 包名
+	选项：
+		-i 查看软件信息 information
+		-p 查询未安装包信息 package
+
+- rpm查询软件的安装位置：
+	命令： rpm -ql 包名
+	选项：
+		-l 列表（list）
+
+- rpm查询文件属于那个rpm包
+	命令： rpm -qf 文件名（文件名必须是rpm安装包，自己新创建的文件查询不到）
+	选项：
+		-f 查询文件属于那个软件包 
+
+- rpm查询软件包的依赖性：
+	命令：rpm -qR 包名
