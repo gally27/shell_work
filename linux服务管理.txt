@@ -1,0 +1,16 @@
+linux中的服务管理：
+	rpm保默认的安装的服务：
+		启动方式：
+		- 使用/etc/init.d/中脚本启动服务。如：/etc/init.d/httpd start|stop/restart
+		- 使用service httpd start|stop|restart
+		自启动方式：
+		- 使用chkconfig命令管理自启动。如：chkconfig --level 2345 httpd on|off
+		- 修改/etc/rc.d/rc.local，加入/etc/init.d/httpd start
+
+	源码保安装的服务：
+		启动：
+			使用源码保启动脚本启动服务。
+			如：/usr/local/apache2/bin/apachectl start
+		自启动：
+			修改/etc/re.d/rc.local文件
+			
