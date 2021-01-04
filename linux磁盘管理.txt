@@ -1,0 +1,50 @@
+linux中的磁盘管理：
+
+查看磁盘的信息：
+	命令：fdisk -l
+		[root@iz2ze06umbj6xzf02r6luvz ~]# fdisk -l
+		
+		Disk /dev/vda: 42.9 GB, 42949672960 bytes, 83886080 sectors
+		Units = sectors of 1 * 512 = 512 bytes
+		Sector size (logical/physical): 512 bytes / 512 bytes
+		I/O size (minimum/optimal): 512 bytes / 512 bytes
+		Disk label type: dos
+		Disk identifier: 0x0008de3e
+		
+		   Device Boot      Start         End      Blocks   Id  System
+		/dev/vda1   *        2048    83884031    41940992   83  Linux
+
+	/dev/sda:
+		在linux中一切硬件（设备）皆文件
+		前两个字母sd:SCSI
+				 hd:IDE
+		第三个字段表示硬盘的牌号
+
+给磁盘分区：
+	命令:fdisk /dev/sda
+		h:帮助
+		n:新建分区
+		p:显示分区
+		d:删除分区
+		w:写入分区
+		q:退出
+		l:列出分区类型
+			83:linux标准分区（ext2,ext3,ext4,xfs）
+			5：扩展分区
+			8e:交换分区（swap）
+			8e:LVM
+
+挂在磁盘：
+	命令：mount [选项] [设备] [挂在点]
+	选项：
+		ro:以只读的方式挂载
+		rw:以读写方式挂载
+		remount:重新挂载以挂载的设备
+		user:允许一般用户挂载设备
+		nouser:不允许一般用户挂载设备
+		-t:指定文件系统类型
+			ext3/ext4/xfs:常用
+
+
+
+
