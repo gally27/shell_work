@@ -45,6 +45,43 @@ linux中的磁盘管理：
 		-t:指定文件系统类型
 			ext3/ext4/xfs:常用
 
+查看文件系统类型：
+	命令：blkid
+	通过此命令查看块设备（包括交换分区）上的系统类型、Label、UUID、挂载目录等信息
+	- 块设备： 指在分区上信息存取的基本单位
+	- 文件系统：ext2/ext3/ext4/xfs
+	- label: 标签
+		- 可以灵活识别分区表达的意义
+		- 可以解决当磁盘结构发生变化时，标准磁盘识别被打乱的情况
+	- UUID:通用唯一识别码
+	
 
-
-
+系统启动时自动挂载分区：
+	文件：/etc/fstab
+	[file system] [mount point] [tpye]  [options] [dump] [pass]
+	file system : 定义文件系统，也就是所谓的分区，写法包括三种：UUID,LABEL,设备名称：/dev/sda*
+	mount point:挂载点
+	type:系统文件类型
+	options:
+		- ro:只读，已只读权限挂载
+		- rw:以可读可写的权限挂载
+		- async:对该文件系统中的所有I/O操作都异步执行
+		- sysnc:对文件系统中的所有I/O操作都同步执行
+		- atime:更新每次读取inode的时间
+		- noatime:不在这个文件系统上更新存取时间
+		- auto:系统自动挂载，可以使用mount -a
+		- noauto:开机不自动挂载，不支持mount -a
+		- exec: 允许执行二进制文件
+		- user:允许一般用户挂载文件系统
+		- nouser:只允许root用户挂载
+		- suid:允许setuid和setgid位发生作用
+		- defaults:rw、suid、exec、nouser、async
+	dump:决定了一个文件系统在备份文件时是否需要备份
+		- 0：不需要备份
+		- 1：每天都要定期备份
+		- 2：不定期备份
+	psss: 定义系统在启动时，是否需要对系统分区好坏情况进行检查
+		- 0:不检查
+		- 1：检查，一般的分区不能定位为1，只有根分区能设置成1
+		- 2：对普通分区进行检查
+	pass:
