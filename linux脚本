@@ -205,6 +205,25 @@ linux中的环境变量：
 
 	临时有效的环境变变量：
 		脚本或 命令使用export
+		
 
+linux中的文件比较
+	-d file : file是否为目录
+	-f file : file是否为文件
+	-e file : file是否存在
+	-r file : file是否可读
+	-w file : file是否可写
+	-x file : file是否可执行
+	-s file : file存在且不为空
 	
+
+linxu中的数值比较：
+	-eq : 等于
+	-gt : 大于
+	-ne : 不等于
+	-lt : 小于
+	-gq : 大于等于
+	-lq : 小于等于
+
+
 
