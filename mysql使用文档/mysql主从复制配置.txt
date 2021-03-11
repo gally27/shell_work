@@ -32,3 +32,38 @@ mysql > start slave;
 	slave_IO_running和slave_sql_running为yes,yes代表开启了
 	
 6、测试
+
+二进制日志格式
+	基于段的格式 binlog_format=STATEMENT
+		优点：
+			日志记录量相对较小，节约磁盘及网络I/O支队一条记录修改或者插入
+			row格式所产生的日志小于段产生的日志量
+		缺点：
+			必须要记录上下文信息
+			保证语句在从服务器上执行的结果和主服务器上相同，特定的
+
+	基于行的日志格式 binlog_format=row
+		同一sql语句修改了10000条数据的情况下
+		基于段的日志格式只会记录这个sql语句
+		基于行的日志会有10000条记录分别记录每一行的数据修改
+			优点：
+				使用msyql主从复制更加安全
+				对每一行的数据修改高于段日志记录格式
+			缺点：
+				记录日志量较大。
+				binlog_row_image=[full|minimal|noblob]
+
+		混合日志格式 binlog_format=mixed
+			根据sql语句由系统决定在基于段和基于行的日志格式进行选择
+			数据量的大小由所执行的sql语句决定
+
+
+常用的命令：
+	查看日志记录的格式：
+		show variables like 'binlog_format';
+	修改日志记录格式：
+		set session binlog_format=statement;
+	查看binlog：
+		show binary logs;
+	刷新logs:
+		flush logs;
