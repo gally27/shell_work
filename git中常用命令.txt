@@ -113,4 +113,7 @@ git init --初始化git仓库
 从远程仓库抓取抓取最新的：
 	git pull
 
+
+git clone
+
 	
